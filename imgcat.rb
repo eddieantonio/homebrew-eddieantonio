@@ -1,7 +1,7 @@
 class Imgcat < Formula
   homepage "https://github.com/eddieantonio/imgcat"
-  url "https://github.com/eddieantonio/imgcat/archive/v1.0.0.tar.gz"
-  sha1 "6c86e9eb6bed6b3e26902f0c502a890ea4861671"
+  url "https://github.com/eddieantonio/imgcat/archive/v1.1.0.tar.gz"
+  sha1 "584307473d9577df5f8ff1e3d3a89df2bcba4ab2"
 
   depends_on "scons" => :build
 
@@ -10,7 +10,6 @@ class Imgcat < Formula
   end
 
   test do
-    # Not the best test but :/
-    system "#{bin}/imgcat", "-h"
+    system "#{bin}/imgcat", "--version"
   end
 end
