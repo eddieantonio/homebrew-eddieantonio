@@ -5,7 +5,7 @@ class IsriOcrEvaluationTools < Formula
   version "6.0.0-rc.1"
   sha256 "82db678506b053dec7fe929d0b91bb83f18f1a6bdcc7c20538d56ad773bcc394"
 
-  depends_on "libutf8proc"
+  depends_on "utf8proc"
 
   def install
     system "make", "-C", "analytic-tools", "install", "PREFIX=#{prefix}"
