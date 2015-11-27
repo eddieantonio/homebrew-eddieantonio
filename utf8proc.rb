@@ -1,4 +1,4 @@
-class Libutf8proc < Formula
+class Utf8proc < Formula
   desc "Clean C library for processing UTF-8 Unicode data"
   homepage "http://julialang.org/utf8proc/"
   url "https://github.com/JuliaLang/utf8proc/archive/v1.3.1.tar.gz"
