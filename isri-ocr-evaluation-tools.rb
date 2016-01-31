@@ -1,8 +1,9 @@
 class IsriOcrEvaluationTools < Formula
   desc "The ISRI Analytic Tools for OCR Evalutaion"
   homepage "https://code.google.com/p/isri-ocr-evaluation-tools/"
-  url "https://github.com/eddieantonio/isri-ocr-evaluation-tools/archive/v6.0.1.tar.gz"
-  sha256 "647c1287121225891b42f9f52f3345acbb4e271f023644d9d636b3ee3e788a4a"
+  url "https://github.com/eddieantonio/isri-ocr-evaluation-tools/archive/v6.1.0.tar.gz"
+  sha256 "991a367dd55097bf095b99f07e30dfc7f782c9bbdf56033188ee1925c0233ec8"
+  head "https://github.com/eddieantonio/isri-ocr-evaluation-tools.git"
 
   depends_on "utf8proc"
 
