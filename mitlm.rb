@@ -17,13 +17,16 @@ class Mitlm < Formula
   end
 
   test do
-    (testpath/"train").write <<-EOF.unindent
+    (testpath/"train").write <<-EOF.undent
       if a tree falls in a forest and no one is around to hear does it still make a sound
     EOF
-    (testpath/"test").write <<-EOF.unindent
-      if a tree falls in a forest and no one is around to hear does willford brimly still make love to a pine tree
+    (testpath/"test").write <<-EOF.undent
+      if a tree falls in a forest and no one is around to hear does wilford brimly still make love to a pine tree
     EOF
+
     system "#{bin}/estimate-ngram", "-text", (testpath/"train"),
-                                    "-eval-perp", (testpath/"text")
+                                    "-write-lm", (testpath/"model.lm")
+    system "#{bin}/evaluate-ngram", "-lm", (testpath/"model.lm"),
+                                    "-eval-perp", (testpath/"test")
   end
 end
