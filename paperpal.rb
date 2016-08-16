@@ -1,12 +1,13 @@
 class Paperpal < Formula
   desc "Paper management with Zotero"
   homepage "https://github.com/eddieantonio/paperpal"
-  url "https://github.com/eddieantonio/paperpal/archive/v0.1.1.tar.gz"
-  sha256 "e224f88f67dfadd88f0d04957fe6efa8420e6ff4f26e24217e34816cda381a83"
+  url "https://github.com/eddieantonio/paperpal/archive/v0.3.0.tar.gz"
+  sha256 "e7af8e3f547db97454bdd9b39866293d501dd06f15ea7e7b99e0648bb79fff53"
 
   # Follows Wiki's guide:
   # https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Python-for-Formula-Authors.md#applications
   depends_on :python if MacOS.version <= :snow_leopard
+
 
   # Dependencies
   resource "mozrepl" do
@@ -14,9 +15,15 @@ class Paperpal < Formula
     sha256 "461b40ce010659b4a4c001a5862fdcba3316264de03137432e16c62817c4004b"
   end
 
+  resource "bibtexparser" do
+    url "https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-0.6.2.tar.gz"
+    sha256 "5888219ac5db1c63ae0ad4db52ec7ad87fe7a32bd60e62ee87bceedb8ebf73b8"
+  end
+
+
   def install
     ENV.prepend_create_path "PYTHONPATH", libexec/"vendor/lib/python2.7/site-packages"
-    %w[mozrepl].each do |r|
+    %w[mozrepl bibtexparser].each do |r|
       resource(r).stage do
         system "python", *Language::Python.setup_install_args(libexec/"vendor")
       end
