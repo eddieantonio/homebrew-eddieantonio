@@ -1,7 +1,11 @@
 class Imgcat < Formula
   homepage "https://github.com/eddieantonio/imgcat"
-  url "https://github.com/eddieantonio/imgcat/archive/v1.1.1.tar.gz"
-  sha256 "3d577501934926c2e7724571f553381c4dbfafec1704588b7242d4c6b610dfc9"
+  url "https://github.com/eddieantonio/imgcat/archive/v2.0.0.tar.gz"
+  sha256 "28c9e8bd87d1448748267c38e9c5c4fb9e2c9a307d80c5775bc8919e820a4746"
+  head "https://github.com/eddieantonio/imgcat.git"
+
+  depends_on "libpng" => :recommended
+  depends_on "jpeg"
 
   def install
     system "make", "install" ,"PREFIX=#{prefix}"
@@ -9,14 +13,17 @@ class Imgcat < Formula
 
   def caveats
     <<-EOS.undent
-      The imgcat binary conflicts with the iTerm2 version >3.0 script
-      that displays 24-bit images inline. You can still use imgcat on
-      iTerm2 versions >3, however note that the builtin script may take
-      precedence over this package's colour quantized goodness.
+      The imgcat binary conflicts with iTerm2 3.0's shell script of the same
+      To use this formula as drop-in replacement, add `unalias imgcat` to your
+      shell startup file **after** sourcing the shell integration, like so:
+
+          unalias imgcat
     EOS
   end
 
   test do
-    system "#{bin}/imgcat", "--version"
+    output = shell_output("#{bin}/imgcat -d 256 #{test_fixtures('test.jpg')}")
+    # Ensure that it produces xterm 256 colour output
+    assert output =~ /[\x1b]\[48;5;\d+m/
   end
 end
