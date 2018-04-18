@@ -16,8 +16,8 @@ class Imgcat < Formula
   end
 
   def caveats
-    <<-EOS.undent
-      The imgcat binary conflicts with iTerm2 3.0's shell script of the same
+    <<~EOS
+      The imgcat binary conflicts with iTerm2 3.0's shell script of the same name.
       To use this formula as drop-in replacement, add `unalias imgcat` to your
       shell startup file **after** sourcing the shell integration, like so:
 
