@@ -1,12 +1,11 @@
 class ReloadBrowser < Formula
-  desc "send a refresh keystroke to the active tab in your browser"
+  desc "Send a refresh keystroke to the active tab in your browser"
   homepage "http://entrproject.org/"
   url "http://entrproject.org/scripts/reload-browser"
   sha256 "3ce1de9420c011c72f39e4d6b337883ff927adf639780e2301f8a10b4f098f16"
 
   def install
-    system "install", "-d", bin
-    system "install", "reload-browser", bin
+    bin.install "reload-browser"
   end
 
   test do
