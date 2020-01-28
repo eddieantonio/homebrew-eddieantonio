@@ -3,8 +3,8 @@ class Fsttest < Formula
 
   desc "Test your Foma FSTs"
   homepage "https://github.com/eddieantonio/fsttest"
-  url "https://files.pythonhosted.org/packages/68/3f/b5e5f67fc5c45f8041723bd4289249248506943345bb7b66389d361e7a96/fsttest-0.4.0.tar.gz"
-  sha256 "2bef849fdac8c992c64a79b3f4593440bf2e1e6e2139fe1d058edd94d2cb0655"
+  url "https://files.pythonhosted.org/packages/53/c3/c9013f365e9c97a4c09312c0c484e9ceea0f25f3c37dd7a591e36e920758/fsttest-0.5.0.tar.gz"
+  sha256 "34c8a3e4b95c7a6b177852740c11d3c996140371a4595195112b2d3caa2fbeb6"
   head "https://github.com/eddieantonio/fsttest.git"
 
   depends_on "python"
@@ -28,7 +28,9 @@ class Fsttest < Formula
     virtualenv_create(libexec, "python3")
     # HACK!
     #   pip looks at the pyproject.toml and it determines that it must use
-    #   poetry... for something (???), but poetry is no longer needed at this
+    #   poetry... for something---blame it on PEP 517 and PEP 518:
+    #     https://www.python.org/dev/peps/pep-0518/
+    #   But! poetry is no longer needed at this
     #   point. Also, poetry is never installed. 🙃🙃🙃
     #   So... remove pyproject.toml to prevent a flagrant build failure!
     rm_f("pyproject.toml")
