@@ -1,25 +1,22 @@
 class Unormalize < Formula
+  include Language::Python::Virtualenv
+
   desc "Perform Unicode normalization"
   homepage "https://github.com/eddieantonio/unormalize"
-  url "https://github.com/eddieantonio/unormalize/archive/v0.1.1.tar.gz"
-  sha256 "ba8db90deb671c1b00d13b67b5b9dd16ab1c06255f30df8020bb677a4918e308"
+  url "https://files.pythonhosted.org/packages/ba/da/a3100dfa5b5732b1cfce76cc6bbdad9c90e660ec0967eacb07a985806446/unormalize-2020.7.17.tar.gz"
+  sha256 "bcfd7ea96da3b6f62defaedbfdb2a0615a6d6e77bf6edc3c1881255302443229"
 
-  depends_on "python" if MacOS.version <= :snow_leopard
+  depends_on "python@3.8"
 
   def install
-    ENV.prepend_create_path "PYTHONPATH", libexec/"lib/python2.7/site-packages"
-    system "python", *Language::Python.setup_install_args(libexec)
+    virtualenv_install_with_resources
 
-    # Install the binaries.
-    bin.install Dir[libexec/"bin/*"]
-    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
-
-    # Install manpage.
+    # Install manpages.
     man1.install Dir["man/*.1"]
   end
 
   test do
-    (testpath/"test").write <<-EOF.undent
+    (testpath/"test").write <<-EOF
     ｶℍ①
     EOF
     system bin/"nfkc", testpath/"test"
