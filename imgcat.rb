@@ -1,12 +1,15 @@
 class Imgcat < Formula
   desc "It's like cat(1), but for images."
   homepage "https://github.com/eddieantonio/imgcat"
-  url "https://github.com/eddieantonio/imgcat/releases/download/v2.5.1/imgcat-2.5.1.tar.gz"
-  sha256 "8faaac392df315b4973bb6927c0eec659e879df6c15ad6f8461073e05b70c537"
+  url "https://github.com/eddieantonio/imgcat/releases/download/v2.5.2/imgcat-2.5.2.tar.gz"
+  sha256 "0c37063911e59721abd628776c26879b046f21bc6aca73dd74bd815843ce03cf"
   head "https://github.com/eddieantonio/imgcat.git"
 
   depends_on "libpng" => :recommended
   depends_on "jpeg"
+  on_linux do
+    depends_on "ncurses"
+  end
 
   def install
     system "./configure"
