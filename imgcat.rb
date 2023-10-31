@@ -1,12 +1,13 @@
 class Imgcat < Formula
-  desc "It's like cat(1), but for images."
+  desc "It's like cat(1), but for images"
   homepage "https://github.com/eddieantonio/imgcat"
-  url "https://github.com/eddieantonio/imgcat/releases/download/v2.5.2/imgcat-2.5.2.tar.gz"
-  sha256 "0c37063911e59721abd628776c26879b046f21bc6aca73dd74bd815843ce03cf"
+  url "https://github.com/eddieantonio/imgcat/releases/download/v2.5.2/imgcat-2.5.2+20231031.tar.gz"
+  version "2.5.2"
+  sha256 "0b6262a8cd16358eea8e6d2ade4f99dbe61f2ffdbf8fd258024cfa8da13da433"
   head "https://github.com/eddieantonio/imgcat.git"
 
-  depends_on "libpng" => :recommended
   depends_on "jpeg"
+  depends_on "libpng" => :recommended
   on_linux do
     depends_on "ncurses"
   end
@@ -29,6 +30,6 @@ class Imgcat < Formula
   test do
     output = shell_output("#{bin}/imgcat -d 256 #{test_fixtures("test.jpg")}")
     # Ensure that it produces xterm 256 colour output
-    assert output =~ /[\x1b]\[48;5;\d+m/
+    assert output =~ /\x1b\[48;5;\d+m/
   end
 end
