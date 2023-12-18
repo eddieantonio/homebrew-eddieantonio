@@ -1,9 +1,8 @@
 class Imgcat < Formula
   desc "It's like cat(1), but for images"
   homepage "https://github.com/eddieantonio/imgcat"
-  url "https://github.com/eddieantonio/imgcat/releases/download/v2.5.2/imgcat-2.5.2+20231031.tar.gz"
-  version "2.5.2"
-  sha256 "0b6262a8cd16358eea8e6d2ade4f99dbe61f2ffdbf8fd258024cfa8da13da433"
+  url "https://github.com/eddieantonio/imgcat/releases/download/v2.6.0/imgcat-2.6.0.tar.gz"
+  sha256 "1e7e69670ad73e36ba1a9f0a09b6a787cf4e141dfe7885ae7ad77c293fb999a6"
   head "https://github.com/eddieantonio/imgcat.git"
 
   depends_on "jpeg"
